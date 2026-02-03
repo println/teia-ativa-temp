@@ -87,6 +87,78 @@ body {
     transform: scale(1.02);
 }
 
+.logo-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-switcher {
+    position: absolute;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: #ccc;
+    padding: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Center vertically */
+}
+
+.logo-switcher-next {
+    right: -40px;
+}
+
+.logo-switcher-prev {
+    left: -40px;
+}
+
+.logo-wrapper:hover .logo-switcher {
+    opacity: 0.3;
+    /* Low opacity on hover of container */
+}
+
+.logo-switcher:hover {
+    opacity: 0.8 !important;
+    /* Higher opacity when directly hovering button */
+    color: #333;
+    /* Reset transform then add specific hover move */
+    transform: translateY(-50%) scale(1.1);
+}
+
+.logo-switcher-next:hover {
+    transform: translateY(-50%) translateX(3px);
+}
+
+.logo-switcher-prev:hover {
+    transform: translateY(-50%) translateX(-3px);
+}
+
+.logo-tooltip {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.logo-tooltip.visible {
+    opacity: 1;
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {

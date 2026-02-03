@@ -15,8 +15,72 @@
 
 <body>
     <main class="container">
-        <!-- Using the existing logo file found in the directory -->
-        <img src="text-logo-2.svg" alt="Logo Teia Ativa" class="logo">
+        <div class="logo-wrapper">
+            <!-- Back Button -->
+            <button class="logo-switcher logo-switcher-prev" aria-label="Previous Logo" onclick="switchLogo(-1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </button>
+
+            <!-- Using the existing logo file found in the directory -->
+            <img src="text-logo-2.svg" alt="Logo Teia Ativa" class="logo" id="main-logo">
+
+            <!-- Next Button -->
+            <button class="logo-switcher logo-switcher-next" aria-label="Next Logo" onclick="switchLogo(1)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </button>
+            <div class="logo-tooltip" id="logo-tooltip"></div>
+        </div>
+
+        <script>
+            const logos = ['full-sharp.svg', 'full-rounded.svg', 'text-logo-2.svg'];
+            const logoNames = ['Arestas Retas', 'Arestas Arredondadas', 'Padrão'];
+            let currentLogoIndex = 2; // Starting with text-logo-2.svg
+            let tooltipTimeout;
+
+            function switchLogo(direction) {
+                // Determine new index handling wrap-around for both negative and positive directions
+                currentLogoIndex = (currentLogoIndex + direction + logos.length) % logos.length;
+
+                const logoElement = document.getElementById('main-logo');
+                const tooltip = document.getElementById('logo-tooltip');
+
+                logoElement.style.opacity = '0';
+
+                setTimeout(() => {
+                    logoElement.src = logos[currentLogoIndex];
+                    logoElement.onload = () => {
+                        logoElement.style.opacity = '1';
+                    };
+                }, 200);
+
+                // Show Tooltip
+                tooltip.textContent = logoNames[currentLogoIndex];
+                tooltip.classList.add('visible');
+
+                // Reset timeout to hide tooltip
+                if (tooltipTimeout) clearTimeout(tooltipTimeout);
+                tooltipTimeout = setTimeout(() => {
+                    tooltip.classList.remove('visible');
+                }, 2000);
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') {
+                    switchLogo(1);
+                } else if (e.key === 'ArrowLeft') {
+                    switchLogo(-1);
+                }
+            });
+        </script>
 
         <div class="social-links">
             <a href="https://www.instagram.com/teia.ativa/" target="_blank" aria-label="Instagram" class="social-icon">
