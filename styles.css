@@ -23,8 +23,47 @@ body {
     max-width: 100%;
     padding: 2rem;
     display: flex;
+    flex-direction: column;
+    /* Stack logo and icons vertically */
     justify-content: center;
     align-items: center;
+    gap: 3rem;
+    /* Space between logo and icons */
+}
+
+/* Social Media Icons */
+.social-links {
+    display: flex;
+    gap: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    /* Delayed start */
+}
+
+.social-icon {
+    color: #333;
+    /* Dark grey for icons */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    /* Light grey background */
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+    color: #fff;
+    background-color: #000;
+    /* Black on hover for high contrast/premium feel */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Logo Styling */
@@ -63,7 +102,20 @@ body {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+    .container {
+        gap: 1.5rem;
+        /* Reduced gap - balanced */
+        padding: 1rem;
+    }
+
     .logo {
-        width: 280px;
+        width: 85vw;
+        /* Logo fills most of the screen width */
+        max-width: 100%;
+    }
+
+    .social-links {
+        gap: 1rem;
+        /* Tighter icons */
     }
 }
