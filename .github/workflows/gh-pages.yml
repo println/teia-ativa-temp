@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -23,4 +25,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: .
+          branch: gh-pages # Ensure target branch is explicit
           clean: true
