@@ -21,7 +21,7 @@
 
         <!-- Linha de ações: WhatsApp + ícones sociais -->
         <div class="actions-row">
-            <a href="https://api.whatsapp.com/send?phone=5521991237036&text=" target="_blank" class="whatsapp-cta" aria-label="Fazer pedido pelo WhatsApp">
+            <a href="javascript:void(0)" onclick="sendMessage()" class="whatsapp-cta" aria-label="Fazer pedido pelo WhatsApp">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 32 32" fill="currentColor">
                     <path d="M16 .5C7.439.5.5 7.439.5 16c0 2.722.707 5.388 2.05 7.74L.5 31.5l8.022-2.01A15.447 15.447 0 0 0 16 31.5C24.561 31.5 31.5 24.561 31.5 16S24.561.5 16 .5zm0 2.8c6.997 0 12.7 5.703 12.7 12.7S22.997 28.7 16 28.7a12.66 12.66 0 0 1-6.48-1.78l-.464-.28-4.763 1.193 1.249-4.622-.308-.483A12.655 12.655 0 0 1 3.3 16C3.3 9.003 9.003 3.3 16 3.3zm-3.908 6.8c-.21 0-.548.079-.836.392-.287.313-1.096 1.07-1.096 2.61s1.122 3.027 1.279 3.237c.157.21 2.166 3.456 5.338 4.71 2.634 1.054 3.173.845 3.746.793.573-.053 1.849-.757 2.11-1.487.261-.73.261-1.356.183-1.487-.079-.13-.288-.21-.601-.366-.314-.157-1.849-.913-2.136-1.017-.287-.104-.496-.157-.705.157-.21.313-.81 1.017-.993 1.226-.183.21-.366.236-.679.079-.314-.157-1.324-.488-2.52-1.556-.932-.833-1.561-1.86-1.744-2.173-.183-.314-.02-.483.138-.64.14-.14.314-.366.47-.549.158-.183.21-.313.314-.522.105-.21.053-.392-.026-.549-.079-.157-.697-1.708-.966-2.335-.254-.61-.512-.523-.705-.533l-.6-.01z"/>
                 </svg>
@@ -57,6 +57,39 @@
             </div>
         </div>
     </main>
+    <script>
+        function sendMessage() {
+            const phone = '5521991237036';
+            const text = 'Olá, gostaria de saber mais sobre os produtos da Mariam Gourmet!';
+
+            const urlApp = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(text)}`;
+            const urlWeb = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Focus/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // No mobile, tentamos o protocolo direto para pular a página intermediária
+                window.location.href = urlApp;
+
+                // Fallback: se em 1.5s a página ainda estiver visível, vai para o link universal
+                const start = Date.now();
+                const timer = setTimeout(() => {
+                    if (!document.hidden && (Date.now() - start < 2000)) {
+                        window.location.href = urlWeb;
+                    }
+                }, 1500);
+
+                // Limpa o timer se o app abrir (página perde o foco)
+                document.addEventListener('visibilitychange', () => {
+                    if (document.hidden) clearTimeout(timer);
+                }, { once: true });
+            } else {
+                // No desktop, abrimos apenas o link universal em uma nova aba.
+                // O wa.me já lida com a escolha entre WhatsApp Desktop App e WhatsApp Web.
+                window.open(urlWeb, '_blank');
+            }
+        }
+    </script>
 </body>
 
 </html>
