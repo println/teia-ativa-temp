@@ -19,7 +19,7 @@ jobs:
 
       # Define o domínio personalizado
       - name: Create CNAME
-        run: echo "teiaativa.com.br" > CNAME
+        run: echo "mariamgourmet.com.br" > CNAME
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4

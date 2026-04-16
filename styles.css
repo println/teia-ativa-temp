@@ -78,7 +78,7 @@ body {
     /* Animation */
     opacity: 0;
     animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.05));
+    /*filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.05));*/
     /* Subtle premium shadow */
     transition: transform 0.3s ease;
 }
