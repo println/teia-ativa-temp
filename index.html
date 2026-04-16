@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tela inicial com logo">
-    <title>Teia Ativa</title>
+    <title>Mariam Gourmet</title>
 
     <!-- Link to CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -16,74 +16,11 @@
 <body>
     <main class="container">
         <div class="logo-wrapper">
-            <!-- Back Button -->
-            <button class="logo-switcher logo-switcher-prev" aria-label="Previous Logo" onclick="switchLogo(-1)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="19" y1="12" x2="5" y2="12"></line>
-                    <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-            </button>
-
-            <!-- Using the existing logo file found in the directory -->
-            <img src="text-logo-2.svg" alt="Logo Teia Ativa" class="logo" id="main-logo">
-
-            <!-- Next Button -->
-            <button class="logo-switcher logo-switcher-next" aria-label="Next Logo" onclick="switchLogo(1)">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </button>
-            <div class="logo-tooltip" id="logo-tooltip"></div>
+            <img src="image.png" alt="Logo Teia Ativa" class="logo" id="main-logo">
         </div>
 
-        <script>
-            const logos = ['full-sharp.svg', 'full-rounded.svg', 'text-logo-2.svg'];
-            const logoNames = ['Arestas Retas', 'Arestas Arredondadas', 'Padrão'];
-            let currentLogoIndex = 2; // Starting with text-logo-2.svg
-            let tooltipTimeout;
-
-            function switchLogo(direction) {
-                // Determine new index handling wrap-around for both negative and positive directions
-                currentLogoIndex = (currentLogoIndex + direction + logos.length) % logos.length;
-
-                const logoElement = document.getElementById('main-logo');
-                const tooltip = document.getElementById('logo-tooltip');
-
-                logoElement.style.opacity = '0';
-
-                setTimeout(() => {
-                    logoElement.src = logos[currentLogoIndex];
-                    logoElement.onload = () => {
-                        logoElement.style.opacity = '1';
-                    };
-                }, 200);
-
-                // Show Tooltip
-                tooltip.textContent = logoNames[currentLogoIndex];
-                tooltip.classList.add('visible');
-
-                // Reset timeout to hide tooltip
-                if (tooltipTimeout) clearTimeout(tooltipTimeout);
-                tooltipTimeout = setTimeout(() => {
-                    tooltip.classList.remove('visible');
-                }, 2000);
-            }
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') {
-                    switchLogo(1);
-                } else if (e.key === 'ArrowLeft') {
-                    switchLogo(-1);
-                }
-            });
-        </script>
-
         <div class="social-links">
-            <a href="https://www.instagram.com/teia.ativa/" target="_blank" aria-label="Instagram" class="social-icon">
+            <a href="https://www.instagram.com/mariamgourmet/" target="_blank" aria-label="Instagram" class="social-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -91,26 +28,23 @@
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                 </svg>
             </a>
-            <a href="https://www.facebook.com/teia.ativa/" target="_blank" aria-label="Facebook" class="social-icon">
+            <a href="https://www.facebook.com/mariamgourmets/" target="_blank" aria-label="Facebook" class="social-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
             </a>
-            <a href="https://www.tiktok.com/@teia.ativa" target="_blank" aria-label="TikTok" class="social-icon">
+            <a href="https://youtu.be/js3IgYZUqpY" target="_blank" aria-label="YouTube" class="social-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-                    <path d="M15 8a1 1 0 0 0 1 1"></path>
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path>
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/teia-ativa-b911b73a9" target="_blank" aria-label="LinkedIn"
-                class="social-icon">
+            <a href="https://api.whatsapp.com/send?phone=5521991237036&text=" target="_blank" aria-label="WhatsApp" class="social-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
             </a>
         </div>
